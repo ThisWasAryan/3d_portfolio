@@ -10,8 +10,13 @@ const FOLDER_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
 const NOTE_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23fef3c7' d='M15,15 h70 v60 l-20,20 h-50 z'/%3E%3Cpath fill='%23fde68a' d='M85,75 h-20 v20 z'/%3E%3C/svg%3E";
 const ID_CARD_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='10' width='60' height='80' rx='5' fill='%23f3f4f6' stroke='%23d1d5db' stroke-width='2'/%3E%3Crect x='35' y='25' width='30' height='30' rx='2' fill='%239ca3af'/%3E%3Crect x='30' y='65' width='40' height='4' fill='%239ca3af'/%3E%3Crect x='30' y='75' width='25' height='4' fill='%239ca3af'/%3E%3Cpath d='M40,5 l20,0 l0,10 l-20,0 z' fill='%23374151'/%3E%3C/svg%3E";
 
-const AppIcon = ({ imageSrc, color1, color2, label, onClick }: any) => (
-  <div className="desktop-app-icon" onDoubleClick={onClick} style={{ pointerEvents: 'auto' }}>
+const AppIcon = ({ imageSrc, color1, color2, label, onClick, isMobile = false }: any) => (
+  <div 
+    className="desktop-app-icon" 
+    onDoubleClick={isMobile ? undefined : onClick} 
+    onClick={isMobile ? onClick : undefined} 
+    style={{ pointerEvents: 'auto' }}
+  >
     <div className="app-icon-squircle" style={{ background: `linear-gradient(135deg, ${color1}, ${color2})` }}>
        <img src={imageSrc} style={{ width: '60px', height: '60px', objectFit: 'contain' }} alt={label} draggable="false" />
     </div>
@@ -56,9 +61,9 @@ export const Widgets: React.FC = () => {
       }}>
         {isMobile ? (
           <>
-            <AppIcon imageSrc="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4c2.svg" color1="#4facfe" color2="#00f2fe" label="Projects" onClick={() => openWindow('projects', 'Projects')} />
-            <AppIcon imageSrc="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f468-200d-1f4bb.svg" color1="#f6d365" color2="#fda085" label="About Me" onClick={() => openWindow('about', 'About Me')} />
-            <AppIcon imageSrc="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4e7.svg" color1="#84fab0" color2="#8fd3f4" label="Contact" onClick={() => openWindow('contact', 'Contact')} />
+            <AppIcon isMobile={true} imageSrc="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4c2.svg" color1="#4facfe" color2="#00f2fe" label="Projects" onClick={() => openWindow('projects', 'Projects')} />
+            <AppIcon isMobile={true} imageSrc="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f468-200d-1f4bb.svg" color1="#f6d365" color2="#fda085" label="About Me" onClick={() => openWindow('about', 'About Me')} />
+            <AppIcon isMobile={true} imageSrc="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4e7.svg" color1="#84fab0" color2="#8fd3f4" label="Contact" onClick={() => openWindow('contact', 'Contact')} />
           </>
         ) : (
           <>
