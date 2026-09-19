@@ -49,7 +49,7 @@ export const myDetails = {
         "System-tray integration"
       ],
       technologies: ["React", "Electron", "Python", "BlueZ", "D-Bus", "RFCOMM", "PipeWire"],
-      imageUrl: "/MBDU_HERO.png"
+      imageUrl: "./MBDU_HERO.png"
     },
     {
       id: "clack",
@@ -63,7 +63,7 @@ export const myDetails = {
         "Multiple keyboard layouts (QWERTY, Dvorak, Colemak, AZERTY)"
       ],
       technologies: ["Rust", "GTK4", "Python", "uinput", "ydotool"],
-      imageUrl: "/ClackGUI1 (Edit).png"
+      imageUrl: "./ClackGUI1 (Edit).png"
     },
     {
       id: "gridbound",
@@ -78,7 +78,7 @@ export const myDetails = {
         "Persistent Local Storage saves"
       ],
       technologies: ["HTML", "CSS", "Vanilla JavaScript"],
-      imageUrl: "/Gridbound.png"
+      imageUrl: "./Gridbound.png"
     },
     {
       id: "rent-management",
@@ -93,7 +93,7 @@ export const myDetails = {
         "WhatsApp payment reminders"
       ],
       technologies: ["Kotlin", "Jetpack Compose", "Room", "SQLite", "Hilt", "Coroutines", "MVVM"],
-      imageUrl: "/RMS.png"
+      imageUrl: "./RMS.png"
     },
     {
       id: "ht-epaperscraper",
@@ -107,7 +107,7 @@ export const myDetails = {
         "Background page prefetching"
       ],
       technologies: ["React", "TypeScript", "Vite"],
-      imageUrl: "/DemoHT1.png"
+      imageUrl: "./DemoHT1.png"
     },
     {
       id: "homeserver",
@@ -120,7 +120,7 @@ export const myDetails = {
         "Automated backups and health monitoring"
       ],
       technologies: ["Linux", "Docker", "CasaOS", "Tailscale", "Networking"],
-      imageUrl: "/CASAFS.png"
+      imageUrl: "./CASAFS.png"
     }
   ]
 };

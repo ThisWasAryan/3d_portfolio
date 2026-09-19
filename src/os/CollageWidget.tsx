@@ -31,8 +31,8 @@ export function CollageWidget() {
               <div className="badge-bottom">
                 <div className="badge-avatar-container">
                   <img 
-                    src="/ProfilePic.jpeg" 
-                    alt="Aryan Raj" 
+                    src="./ProfilePic.jpeg" 
+                    alt="Aryan Raj Profile" 
                     className="badge-avatar" 
                     draggable="false" 
                   />

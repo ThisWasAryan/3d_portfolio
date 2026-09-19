@@ -50,7 +50,7 @@ export function LoginScreen() {
 
       {/* Center Profile Section */}
       <div className="login-profile-container">
-        <img src="/ProfilePic.jpeg" alt="Aryan Raj" className="login-avatar" />
+        <img src="./ProfilePic.jpeg" alt="Aryan Raj" className="login-avatar" />
         <div className="login-name">Aryan Raj</div>
         <div className="login-title">SOFTWARE ENGINEER</div>
       </div>

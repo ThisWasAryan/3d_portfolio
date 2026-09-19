@@ -8,7 +8,7 @@ export function AboutApp() {
       <div style={{ padding: 20, lineHeight: 1.6, color: '#fff', overflowY: 'auto', height: '100%' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
           <img 
-            src="/ProfilePic.jpeg" 
+            src="./ProfilePic.jpeg" 
             alt="Aryan Raj" 
             style={{ width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover', border: '3px solid rgba(255,255,255,0.2)' }}
           />

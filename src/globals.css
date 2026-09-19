@@ -187,4 +187,34 @@ html, body, #root {
     height: 30px !important;
     margin: 0 2px !important;
   }
+  
+  .dock-container {
+    bottom: 25px !important; /* Move dock up to avoid mobile browser address bar */
+  }
+
+  /* Make windows wider and easier to manage on mobile */
+  .os-window {
+    width: 95vw !important;
+    min-width: 95vw !important;
+    max-width: 95vw !important;
+    height: 75vh !important;
+    left: 2.5vw !important;
+    top: 8vh !important;
+    transform: none !important; /* Override Rnd inline transform on mobile to force centering */
+  }
+
+  /* Make window controls (close/minimize) much bigger for touch targets */
+  .window-titlebar {
+    height: 48px !important;
+    padding: 0 20px !important;
+  }
+  
+  .control-btn {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .window-controls, .window-controls-placeholder {
+    width: 80px !important;
+  }
 }
