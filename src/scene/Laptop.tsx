@@ -26,7 +26,7 @@ export function Laptop(props: any) {
   // Reusable Vector3 to avoid per-frame allocation
   const _tempVec3 = useRef(new THREE.Vector3());
   
-  const { nodes, materials } = useGLTF('/models/laptop_free.glb') as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF('./models/laptop_free.glb') as unknown as GLTFResult;
   
   const [hovered, setHovered] = useState(false);
   const setViewMode = useAppStore((state) => state.setViewMode);
@@ -85,4 +85,4 @@ export function Laptop(props: any) {
   );
 }
 
-useGLTF.preload('/models/laptop_free.glb');
+useGLTF.preload('./models/laptop_free.glb');

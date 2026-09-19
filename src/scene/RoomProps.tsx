@@ -18,7 +18,7 @@ const EARBUDS_ROTATION: [number, number, number] = [0.00, -0.20, 0.00];
 const EARBUDS_SCALE = 0.005;
 
 export function Desk() {
-  const { scene } = useGLTF('/models/desk_set.glb');
+  const { scene } = useGLTF('./models/desk_set.glb');
   return (
     <group position={DESK_POSITION} scale={DESK_SCALE}>
       <primitive object={scene} position={DESK_INNER_OFFSET} />
@@ -27,7 +27,7 @@ export function Desk() {
 }
 
 export function CameraModel() {
-  const { scene } = useGLTF('/models/canon_at-1_retro_camera.glb');
+  const { scene } = useGLTF('./models/canon_at-1_retro_camera.glb');
   const [hovered, setHovered] = React.useState(false);
 
   React.useEffect(() => {
@@ -48,13 +48,13 @@ export function CameraModel() {
 }
 
 export function GaneshIdol() {
-  const { scene } = useGLTF('/models/ganesh_idol_model_-_meshroom.glb');
+  const { scene } = useGLTF('./models/ganesh_idol_model_-_meshroom.glb');
   return <primitive object={scene} position={GANESH_POSITION} rotation={GANESH_ROTATION} scale={GANESH_SCALE} />;
 }
 
 export function Earbuds() {
-  const { scene } = useGLTF('/models/samsung_galaxy_buds_live.glb');
+  const { scene } = useGLTF('./models/samsung_galaxy_buds_live.glb');
   return <primitive object={scene} position={EARBUDS_POSITION} rotation={EARBUDS_ROTATION} scale={EARBUDS_SCALE} />;
 }
 
-useGLTF.preload('/models/desk_set.glb');
+useGLTF.preload('./models/desk_set.glb');
