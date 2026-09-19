@@ -1,6 +1,19 @@
 .os-window {
   display: flex;
   flex-direction: column;
+  animation: windowOpen 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+@keyframes windowOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .window-inner {
@@ -8,10 +21,11 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background: rgba(30, 30, 30, 0.85);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  background: var(--window-bg, rgba(25, 25, 25, 0.7));
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.2s ease;
@@ -19,12 +33,13 @@
 
 .os-window.active .window-inner {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .window-titlebar {
-  height: 35px;
-  background: rgba(0, 0, 0, 0.3);
+  height: 38px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,29 +53,44 @@
 }
 
 .window-title {
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  color: #ddd;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+  flex: 1;
 }
 
 .window-controls {
   display: flex;
   gap: 8px;
+  width: 60px; /* fixed width to balance title */
+}
+
+.window-controls-placeholder {
+  width: 60px; /* matches .window-controls width to keep title centered */
 }
 
 .control-btn {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: none;
+  border: 1px solid rgba(0,0,0,0.1);
   cursor: pointer;
   outline: none;
   transition: filter 0.2s;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-titlebar:hover .control-btn {
+  /* optional: could add icons inside on hover */
 }
 
 .control-btn:hover {
-  filter: brightness(1.2);
+  filter: brightness(0.9);
 }
 
 .control-btn.close {

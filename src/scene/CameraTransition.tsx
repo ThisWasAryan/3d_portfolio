@@ -1,41 +1,54 @@
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useThree } from '@react-three/fiber';
 import { useAppStore } from '../stores/appStore';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 
 export function CameraTransition() {
-  const { camera, controls } = useThree();
+  const { camera, controls, invalidate } = useThree();
   const viewMode = useAppStore((state) => state.viewMode);
   const setViewMode = useAppStore((state) => state.setViewMode);
-  const tl = useRef<gsap.core.Timeline | null>(null);
 
-  useGSAP(() => {
+  useEffect(() => {
+    // Kill any active tweens on the camera and controls when mode changes
+    gsap.killTweensOf(camera.position);
+    if (controls) {
+      gsap.killTweensOf((controls as any).target);
+    }
+
     if (viewMode === 'laptop-transition') {
-      // The lid animation takes 1.5s
-      // We can start the camera zoom simultaneously or slightly delayed
-      tl.current = gsap.timeline({
+      const tl = gsap.timeline({
+        onUpdate: invalidate,
         onComplete: () => {
-          // Once zoomed in, transition to login screen
           setViewMode('login');
         }
       });
 
-      tl.current.to(camera.position, {
-        x: 0.025,
-        y: 1.64,
-        z: 3.94,
-        duration: 1.5,
-        ease: 'power2.inOut'
+      tl.to(camera.position, {
+        x: 0.04,
+        y: 0.3,
+        z: 2.75,
+        duration: 1.8,
+        ease: 'power3.in'
       }, 0);
+      
+      if (controls) {
+        tl.to((controls as any).target, {
+          x: 0.04,
+          y: 0.3,
+          z: 2.6,
+          duration: 1.8,
+          ease: 'power3.in'
+        }, 0);
+      }
     } else if (viewMode === 'shutdown') {
-      tl.current = gsap.timeline({
+      const tl = gsap.timeline({
+        onUpdate: invalidate,
         onComplete: () => {
           setViewMode('room');
         }
       });
 
-      tl.current.to(camera.position, {
+      tl.to(camera.position, {
         x: 0.05,
         y: 3.28,
         z: 7.88,
@@ -44,7 +57,7 @@ export function CameraTransition() {
       }, 0);
 
       if (controls) {
-        tl.current.to((controls as any).target, {
+        tl.to((controls as any).target, {
           x: 0,
           y: 0,
           z: 0,
@@ -53,7 +66,7 @@ export function CameraTransition() {
         }, 0);
       }
     }
-  }, [viewMode, camera, controls, setViewMode]);
+  }, [viewMode, camera, controls, invalidate, setViewMode]);
 
   return null;
 }

@@ -1,0 +1,222 @@
+.widgets-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through empty space */
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+/* Center Profile Widget */
+.profile-widget {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  pointer-events: auto;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: url('https://avatars.githubusercontent.com/u/74333917?v=4') center/cover;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.profile-info {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.profile-role {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 5px 0;
+}
+
+.profile-desc {
+  font-size: 0.9rem;
+  font-weight: 400;
+  max-width: 300px;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.profile-link {
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 5px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+/* Right Side Widgets */
+.right-widgets {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  pointer-events: auto;
+  width: 280px;
+}
+
+.widget-glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  padding: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.widget-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Weather Widget */
+.weather-cards {
+  display: flex;
+  gap: 10px;
+}
+
+.weather-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.weather-city {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.weather-temp {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.weather-desc {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Now Playing Widget */
+.now-playing {
+  display: flex;
+  gap: 15px;
+}
+
+.album-art {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+.track-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.track-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.track-artist {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.player-btn {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.player-btn:hover {
+  opacity: 1;
+}
+
+/* Desktop App Icons */
+.desktop-app-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.app-icon-squircle {
+  width: 90px;
+  height: 90px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.desktop-app-icon:hover .app-icon-squircle {
+  transform: scale(1.08);
+}
+
+.desktop-app-icon:active .app-icon-squircle {
+  transform: scale(0.95);
+}
+
+.app-icon-label {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.1);
+}

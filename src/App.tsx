@@ -15,10 +15,10 @@ function App() {
 
   // R3F canvas is alive during room interaction and transitions.
   // It is UNMOUNTED during desktop mode to free all GPU memory.
-  const show3D = viewMode === 'room' || viewMode === 'laptop-transition' || viewMode === 'login' || viewMode === 'shutdown';
+  const show3D = viewMode === 'loading' || viewMode === 'room' || viewMode === 'laptop-transition' || viewMode === 'login' || viewMode === 'shutdown';
   
   // Canvas is visually visible only when the user should see the room
-  const canvasVisible = viewMode === 'room' || viewMode === 'laptop-transition' || viewMode === 'shutdown';
+  const canvasVisible = viewMode === 'loading' || viewMode === 'room' || viewMode === 'laptop-transition' || viewMode === 'shutdown';
 
   return (
     <>

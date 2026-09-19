@@ -1,39 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Window } from '../Window';
+import { Mail } from 'lucide-react';
+import { Instagram, Linkedin, Github } from '../BrandIcons';
 
 export function ContactApp() {
-  const [sent, setSent] = useState(false);
-
   return (
     <Window id="contact">
-      <div style={{ padding: 20 }}>
-        <h2>Contact Me</h2>
-        {sent ? (
-          <div style={{ background: 'rgba(39, 201, 63, 0.2)', padding: '15px', borderRadius: '5px', color: '#27c93f' }}>
-            Message sent! (Mock)
-          </div>
-        ) : (
-          <form 
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}
-          >
-            <div>
-              <label style={{ display: 'block', marginBottom: '5px' }}>Name</label>
-              <input type="text" required style={{ width: '100%', padding: '8px', borderRadius: '4px', border: 'none', background: 'rgba(255,255,255,0.1)', color: 'white' }} />
+      <div style={{ padding: 30, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'white', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>Let's Connect</h2>
+        <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '40px', fontSize: '1.1rem' }}>
+          I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+        </p>
+        
+        <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <a href="https://www.instagram.com/drugd3alers/" target="_blank" rel="noreferrer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'white', transition: 'transform 0.2s' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+            <div style={{ padding: '20px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <Instagram size={32} />
             </div>
-            <div>
-              <label style={{ display: 'block', marginBottom: '5px' }}>Email</label>
-              <input type="email" required style={{ width: '100%', padding: '8px', borderRadius: '4px', border: 'none', background: 'rgba(255,255,255,0.1)', color: 'white' }} />
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.linkedin.com/in/thiswasaryan1/" target="_blank" rel="noreferrer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'white', transition: 'transform 0.2s' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+            <div style={{ padding: '20px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <Linkedin size={32} />
             </div>
-            <div>
-              <label style={{ display: 'block', marginBottom: '5px' }}>Message</label>
-              <textarea required rows={4} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: 'none', background: 'rgba(255,255,255,0.1)', color: 'white', resize: 'vertical' }}></textarea>
+            <span>LinkedIn</span>
+          </a>
+          <a href="http://github.com/thisWasAryan" target="_blank" rel="noreferrer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'white', transition: 'transform 0.2s' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+            <div style={{ padding: '20px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <Github size={32} />
             </div>
-            <button type="submit" style={{ padding: '10px', background: '#007acc', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-              Send Message
-            </button>
-          </form>
-        )}
+            <span>GitHub</span>
+          </a>
+          <a href="mailto:hi@thiswasaryan.in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'white', transition: 'transform 0.2s' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+            <div style={{ padding: '20px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <Mail size={32} />
+            </div>
+            <span>Email</span>
+          </a>
+        </div>
       </div>
     </Window>
   );

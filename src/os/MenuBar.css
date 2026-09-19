@@ -1,0 +1,80 @@
+.menubar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: rgba(30, 30, 30, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.85rem;
+  z-index: 2000;
+  box-sizing: border-box;
+}
+
+.menubar-left, .menubar-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.menubar-item {
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  transition: background-color 0.1s;
+  font-weight: 500;
+}
+
+.menubar-item:hover, .menubar-logo:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.menubar-logo {
+  padding: 0 12px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 800;
+  position: relative;
+}
+
+/* Simple dropdown for OS menu */
+.os-dropdown {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: rgba(40, 40, 40, 0.85);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  min-width: 200px;
+  padding: 5px 0;
+  display: none;
+  flex-direction: column;
+}
+
+.menubar-logo.active .os-dropdown {
+  display: flex;
+}
+
+.os-dropdown-item {
+  padding: 5px 15px;
+  cursor: pointer;
+  color: white;
+}
+
+.os-dropdown-item:hover {
+  background-color: #007aff;
+}

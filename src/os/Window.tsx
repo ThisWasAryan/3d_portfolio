@@ -47,12 +47,13 @@ export function Window({ id, children }: WindowProps) {
     >
       <div className="window-inner">
         <div className="window-titlebar" onDoubleClick={() => {/* Optional: maximize */}}>
-          <div className="window-title">{windowState.title}</div>
           <div className="window-controls">
+            <button className="control-btn close" onClick={(e) => { e.stopPropagation(); closeWindow(id); }} />
             <button className="control-btn minimize" onClick={(e) => { e.stopPropagation(); minimizeWindow(id); }} />
             <button className="control-btn maximize" />
-            <button className="control-btn close" onClick={(e) => { e.stopPropagation(); closeWindow(id); }} />
           </div>
+          <div className="window-title">{windowState.title}</div>
+          <div className="window-controls-placeholder"></div>
         </div>
         <div className="window-content">
           {children}

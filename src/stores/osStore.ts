@@ -43,8 +43,11 @@ export const useOSStore = create<OSState>((set, get) => ({
         };
       }
 
-      // Default spawn position offset slightly to look natural
-      const offset = Object.keys(state.windows).length * 30;
+      // Default spawn position exactly in center
+      const winWidth = window.innerWidth * 0.55;
+      const winHeight = window.innerHeight * 0.65;
+      const spawnX = (window.innerWidth - winWidth) / 2;
+      const spawnY = (window.innerHeight - winHeight) / 2;
       
       return {
         windows: {
@@ -55,8 +58,8 @@ export const useOSStore = create<OSState>((set, get) => ({
             isOpen: true,
             isMinimized: false,
             zIndex: newZIndex,
-            position: { x: 100 + offset, y: 100 + offset },
-            size: { width: 600, height: 400 },
+            position: { x: spawnX, y: spawnY },
+            size: { width: winWidth, height: winHeight },
           },
         },
         highestZIndex: newZIndex,

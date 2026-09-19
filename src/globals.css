@@ -1,6 +1,6 @@
 :root {
   --font-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Theme: Day (default) */
   --bg-color: #f4f4f5;
@@ -52,4 +52,139 @@ html, body, #root {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(150, 150, 150, 0.8);
+}
+
+.room-header-title {
+  font-size: 2rem;
+}
+
+.room-header-subtitle {
+  font-size: 1rem;
+}
+
+.room-floating-text {
+  font-size: 4rem;
+}
+
+.room-floating-badge {
+  font-size: 1.2rem;
+  padding: 12px 24px;
+}
+
+@media (max-width: 768px) {
+  .room-header-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+  }
+  
+  .room-header-title {
+    font-size: 1.5rem !important;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .room-header-subtitle {
+    font-size: 0.9rem !important;
+    text-align: center;
+  }
+
+  .room-floating-text {
+    font-size: 2.5rem !important;
+  }
+
+  .room-floating-badge {
+    font-size: 1rem !important;
+    padding: 8px 16px !important;
+  }
+
+  /* Desktop Mobile Overrides */
+  .desktop-workspace {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  
+  .widgets-layer {
+    padding: 10px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .desktop-apps-container {
+    margin-top: 40px !important;
+  }
+
+  .desktop-apps-container .app-icon-squircle {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 12px !important;
+  }
+
+  .desktop-apps-container img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .desktop-apps-container .app-icon-label {
+    font-size: 0.65rem !important;
+    padding: 2px 6px !important;
+  }
+  
+  .right-widgets {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 90% !important;
+    margin: 20px auto 100px auto !important; /* give space for double dock */
+    display: flex !important;
+    justify-content: center !important;
+  }
+  
+  .collage-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    transform: scale(0.85) !important;
+    transform-origin: top center !important;
+    margin-top: 40px !important;
+    margin-bottom: -50px !important; 
+    gap: 30px !important;
+  }
+  
+  .collage-row-1, .collage-row-2 {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+  
+  .center-text-block .center-name {
+    font-size: 24px !important;
+    white-space: nowrap !important;
+  }
+  
+  /* Taskbar / Dock Mobile */
+  .dock {
+    gap: 4px !important;
+    padding: 8px !important;
+    max-width: 95vw !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    align-content: center !important;
+    overflow-x: visible !important;
+    border-radius: 16px !important;
+  }
+  
+  .dock-item {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  
+  .dock-item:hover {
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 2px !important;
+  }
 }

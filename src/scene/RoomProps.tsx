@@ -28,7 +28,23 @@ export function Desk() {
 
 export function CameraModel() {
   const { scene } = useGLTF('/models/canon_at-1_retro_camera.glb');
-  return <primitive object={scene} position={CAMERA_POSITION} rotation={CAMERA_ROTATION} scale={CAMERA_SCALE} />;
+  const [hovered, setHovered] = React.useState(false);
+
+  React.useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto';
+  }, [hovered]);
+
+  return (
+    <primitive 
+      object={scene} 
+      position={CAMERA_POSITION} 
+      rotation={CAMERA_ROTATION} 
+      scale={CAMERA_SCALE} 
+      onClick={() => window.open('https://photos.thiswasaryan.in', '_blank')}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
+    />
+  );
 }
 
 export function GaneshIdol() {

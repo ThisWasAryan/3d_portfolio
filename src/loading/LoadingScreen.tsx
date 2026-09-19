@@ -1,38 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import { useAppStore } from '../stores/appStore';
+import { useProgress } from '@react-three/drei';
 import './LoadingScreen.css';
+
+const HELLOS = [
+  "Hello", "こんにちは", "नमस्ते", "Hola", "Bonjour", "Ciao", "Привет", "안녕하세요", "مرحبا"
+];
 
 export function LoadingScreen() {
   const setViewMode = useAppStore((state) => state.setViewMode);
-  
-  const [phase, setPhase] = useState<'text' | 'fading-text' | 'eye-opening' | 'done'>('text');
+  const { progress } = useProgress();
+  const [phase, setPhase] = useState<'loading' | 'ready' | 'eye-opening' | 'done'>('loading');
+  const [helloIndex, setHelloIndex] = useState(0);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
 
+  // Force loading screen to show at least a few languages
   useEffect(() => {
-    // Sequence timing
-    // 0.5s: "Hello" appears
-    // 1.5s: "Hi" appears
-    // 2.5s: Start fading out text
-    const fadeOutTimer = setTimeout(() => {
-      setPhase('fading-text');
+    const timer = setTimeout(() => {
+      setMinTimeElapsed(true);
     }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
-    // 3.0s: Start eye opening animation
-    const eyeOpenTimer = setTimeout(() => {
-      setPhase('eye-opening');
-    }, 3500);
+  // Cycle languages while loading
+  useEffect(() => {
+    if (phase !== 'loading') return;
+    const interval = setInterval(() => {
+      setHelloIndex((prev) => (prev + 1) % HELLOS.length);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [phase]);
 
-    // 4.7s: Eye opening finishes (animation is 1.2s), transition to room
-    const doneTimer = setTimeout(() => {
-      setPhase('done');
-      setViewMode('room');
-    }, 4700);
+  // Transition from loading to ready when 100% AND min time elapsed
+  useEffect(() => {
+    // Wait for progress to be truly 100 and min time elapsed
+    if (progress >= 100 && minTimeElapsed && phase === 'loading') {
+      const timer = setTimeout(() => {
+        setPhase('ready');
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [progress, minTimeElapsed, phase]);
 
-    return () => {
-      clearTimeout(fadeOutTimer);
-      clearTimeout(eyeOpenTimer);
-      clearTimeout(doneTimer);
-    };
-  }, [setViewMode]);
+  // Sequence from ready to done
+  useEffect(() => {
+    if (phase === 'ready') {
+      // 1.2s to show "Hi_" blinking
+      const eyeTimer = setTimeout(() => {
+        setPhase('eye-opening');
+      }, 1200);
+      return () => clearTimeout(eyeTimer);
+    } else if (phase === 'eye-opening') {
+      // 1.2s for eyelid animation to finish
+      const doneTimer = setTimeout(() => {
+        setPhase('done');
+        setViewMode('room');
+      }, 1200);
+      return () => clearTimeout(doneTimer);
+    }
+  }, [phase, setViewMode]);
 
   if (phase === 'done') return null;
 
@@ -40,9 +66,20 @@ export function LoadingScreen() {
     <div className={`loading-container ${phase === 'eye-opening' ? 'eye-opening' : ''}`}>
       <div className="eyelid eyelid-top"></div>
       <div className="eyelid eyelid-bottom"></div>
-      <div className={`text-container ${phase === 'fading-text' || phase === 'eye-opening' ? 'text-fading-out' : ''}`}>
-        <div className="text-line text-hello">Hello.</div>
-        <div className="text-line text-hi">Hi.</div>
+      
+      <div className={`text-container ${phase === 'eye-opening' ? 'text-fading-out' : ''}`}>
+        {phase === 'loading' && (
+          <div className="text-line text-hello">{HELLOS[helloIndex]}</div>
+        )}
+        {phase !== 'loading' && (
+          <div className="text-line text-hi">
+            Hi<span className="blinking-cursor">_</span>
+          </div>
+        )}
+      </div>
+      
+      <div className={`progress-indicator ${phase !== 'loading' ? 'fading-out' : ''}`}>
+        {Math.round(progress)}%
       </div>
     </div>
   );
