@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 3D Model Backups & Unoptimized Assets
+public/models/originals/
+public/*.glb
+*.backup*
