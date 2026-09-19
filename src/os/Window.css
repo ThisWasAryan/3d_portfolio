@@ -1,0 +1,84 @@
+.os-window {
+  display: flex;
+  flex-direction: column;
+}
+
+.window-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.2s ease;
+}
+
+.os-window.active .window-inner {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.window-titlebar {
+  height: 35px;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  cursor: grab;
+  user-select: none;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+.window-title {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: filter 0.2s;
+}
+
+.control-btn:hover {
+  filter: brightness(1.2);
+}
+
+.control-btn.close {
+  background-color: #ff5f56;
+}
+
+.control-btn.minimize {
+  background-color: #ffbd2e;
+}
+
+.control-btn.maximize {
+  background-color: #27c93f;
+}
+
+.window-content {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+}

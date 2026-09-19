@@ -1,0 +1,81 @@
+.loading-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Remove background-color here so we can see through when eyelids open */
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+.eyelid {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #000;
+  transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+  z-index: -1;
+}
+
+.eyelid-top {
+  top: 0;
+  transform-origin: top;
+}
+
+.eyelid-bottom {
+  bottom: 0;
+  transform-origin: bottom;
+}
+
+.loading-container.eye-opening .eyelid-top {
+  transform: translateY(-100%);
+}
+
+.loading-container.eye-opening .eyelid-bottom {
+  transform: translateY(100%);
+}
+
+.text-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.text-line {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.text-hello {
+  animation: fadeUpIn 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.text-hi {
+  animation: fadeUpIn 1s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.text-fading-out .text-line {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeUpIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
