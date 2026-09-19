@@ -189,18 +189,12 @@ html, body, #root {
   }
   
   .dock-container {
-    bottom: 25px !important; /* Move dock up to avoid mobile browser address bar */
+    bottom: 60px !important; /* Move dock much higher up to avoid mobile browser address bar */
   }
 
-  /* Make windows wider and easier to manage on mobile */
+  /* Remove hardcoded window dimensions so react-rnd can resize/move */
   .os-window {
-    width: 95vw !important;
-    min-width: 95vw !important;
-    max-width: 95vw !important;
-    height: 75vh !important;
-    left: 2.5vw !important;
-    top: 8vh !important;
-    transform: none !important; /* Override Rnd inline transform on mobile to force centering */
+    /* Dimensions are now set dynamically in osStore.ts */
   }
 
   /* Make window controls (close/minimize) much bigger for touch targets */

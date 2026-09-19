@@ -22,6 +22,7 @@ export function Window({ id, children }: WindowProps) {
   }
 
   const isActive = activeWindowId === id;
+  const isMobile = window.innerWidth <= 768;
 
   return (
     <Rnd
@@ -38,18 +39,19 @@ export function Window({ id, children }: WindowProps) {
         updateWindowPosition(id, position);
       }}
       onMouseDown={() => focusWindow(id)}
-      minWidth={300}
+      minWidth={isMobile ? 300 : 400}
       minHeight={200}
       bounds=".desktop-workspace"
       dragHandleClassName="window-titlebar"
+      cancel=".window-controls"
       style={{ zIndex: windowState.zIndex }}
       className={`os-window ${isActive ? 'active' : ''}`}
     >
       <div className="window-inner">
         <div className="window-titlebar" onDoubleClick={() => {/* Optional: maximize */}}>
           <div className="window-controls">
-            <button className="control-btn close" onClick={(e) => { e.stopPropagation(); closeWindow(id); }} />
-            <button className="control-btn minimize" onClick={(e) => { e.stopPropagation(); minimizeWindow(id); }} />
+            <button className="control-btn close" onClick={(e) => { e.stopPropagation(); closeWindow(id); }} onTouchEnd={(e) => { e.stopPropagation(); closeWindow(id); }} />
+            <button className="control-btn minimize" onClick={(e) => { e.stopPropagation(); minimizeWindow(id); }} onTouchEnd={(e) => { e.stopPropagation(); minimizeWindow(id); }} />
             <button className="control-btn maximize" />
           </div>
           <div className="window-title">{windowState.title}</div>

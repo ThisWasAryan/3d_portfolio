@@ -43,11 +43,12 @@ export const useOSStore = create<OSState>((set, get) => ({
         };
       }
 
-      // Default spawn position exactly in center
-      const winWidth = window.innerWidth * 0.55;
-      const winHeight = window.innerHeight * 0.65;
+      // Default spawn position exactly in center (adjusted for mobile)
+      const isMobile = window.innerWidth <= 768;
+      const winWidth = isMobile ? window.innerWidth * 0.95 : window.innerWidth * 0.55;
+      const winHeight = isMobile ? window.innerHeight * 0.75 : window.innerHeight * 0.65;
       const spawnX = (window.innerWidth - winWidth) / 2;
-      const spawnY = (window.innerHeight - winHeight) / 2;
+      const spawnY = isMobile ? window.innerHeight * 0.05 : (window.innerHeight - winHeight) / 2;
       
       return {
         windows: {
